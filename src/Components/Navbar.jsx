@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
-import {MenuIcon, SearchIcon, TicketPlus, XIcon} from 'lucide-react'
+import {MenuIcon, SearchIcon, TicketPlus,User2Icon,XIcon} from 'lucide-react'
 import {useClerk, UserButton, useUser} from '@clerk/clerk-react'
 
 function Navbar() {
@@ -24,8 +24,11 @@ function Navbar() {
            <Link to='/favorites' onClick={()=>{scrollTo(0,0);setIsOpen(false)}}>Favorites</Link>
        </div>
 
-       <div className='flex items-center gap-8'>
+       <div className='flex items-center gap-4'>
           <SearchIcon className='max-md:hidden w-6 h-6 cursor-pointer'/>
+          <span title='admin' onClick={()=>navigate("/admin")}>
+          <User2Icon className='bg-gray-700 rounded-full text-gray-500 cursor-pointer w-6 h-6'/>
+          </span>
           {
             !user ?(
               <button onClick={openSignIn} className='px-4 py-1 sm:px-7 sm:py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer'>Login</button>
